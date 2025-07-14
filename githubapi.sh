@@ -1,5 +1,17 @@
 #!/bin/bash
 
+#Author: ChennaKrishna Reddy
+#Date: 14/07/2025
+#Version: v1
+# This script uses to get github users who is having collaborators access
+
+function helper {
+    cmd_line_args=2
+    if [ $# -ne $cmd_line_args ]; then
+    echo "please execute the script with required cmd args"
+    echo "execute like this ex: ./githubapi.sh REPO_OWNER REPO_NAME"
+    fi
+}
 # GitHub API URL
 API_URL="https://api.github.com"
 
@@ -37,6 +49,7 @@ function list_users_with_read_access {
 }
 
 # Main script
+helper "$@"
 
 echo "Listing users with read access to ${REPO_OWNER}/${REPO_NAME}..."
 list_users_with_read_access
